@@ -1,0 +1,25 @@
+﻿@model SIS758.Models.ingresar
+
+@{
+    ViewBag.Title = "index";
+    Layout = "~/Views/Shared/inicio.cshtml";
+}
+<h1></h1>
+
+@section archivo{
+    <fieldset class="f1">
+        <div>
+            @Html.TextBoxFor(n => n.usua, new { @placeholder="polii"})
+            @Html.ValidationMessageFor(n=>n.usua)
+        </div>
+        <div>
+            @Html.TextBoxFor(n=>n.pas)
+            @Html.ValidationMessageFor(n=>n.pas)
+            <input id="b1" type="submit" value="ACEPTAR" />
+        </div>
+    </fieldset>
+}
+
+@section pie{
+    <p>mi diseño</p>
+}

@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "registrar";
+    Layout = "~/Views/Shared/cliente.cshtml";
+}
+
+<h2>registrar</h2>
+
+<div align="center">
+ <fieldset class="re">
+    <legend>Detalle de Empleados</legend>
+    <table>
+        <td id="cero">Nº de Documento</td><td id="cero">Nombre</td><td id="cero">Apellido Pat</td><td id="cero">Apellido Mat</td><tr></tr>
+        @foreach (var item in ViewBag.emp)
+        {
+            string y = @item.DocId;
+            int a=0;
+            <div id="recuadro">
+            @foreach (var v in @ViewBag.usu)
+            {
+                if (v.DocId == y)
+                {
+                    a++;
+                }
+                
+            }
+            </div>
+            if (a == 0)
+            {
+                <td align="center" id="1">@item.DocId</td>
+                <td align="center" id="2">@item.Nombre</td>
+                <td align="center" id="3">@item.ApPat</td>
+                <td align="center" id="4">@item.ApMat</td>
+                <td> @Html.ActionLink("New_Usuario", "../usuario/alta", new { id = y })</td>
+                <!--<td> @Html.ActionLink("dar de baja", "../empleado/eliminar", new { id = y })</td>-->
+                <tr></tr>
+            }
+
+        }
+    </table>
+    </fieldset>
+  <fieldset class="de">
+    <legend>Detalle de Empleados</legend>
+    <table>
+        <td id="cero">Nº de Documento</td><td id="cero">Nombre</td><td id="cero">Apellido Pat</td><td id="cero">Apellido Mat</td><tr></tr>
+        @foreach (var item1 in @ViewBag.usu)
+        {
+            string x = @item1.DocId;
+                <td align="center" id="1">@item1.DocId</td>
+                <td align="center" id="2">@item1.Nombre</td>
+                <td align="center" id="3">@item1.ApPat</td>
+                <td align="center" id="4">@item1.ApMat</td>
+                <!--<td> @Html.ActionLink("New_Usuario", "../usuario/alta", new { id = x })</td>
+                <td> @Html.ActionLink("dar de baja", "../empleado/eliminar", new { id = x })</td>-->
+                <tr></tr>
+        }
+    </table>
+    </fieldset>
+</div>

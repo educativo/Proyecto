@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+   
+   <!---asbnasfnasf-->
+   
+   <!---@Styles.Render("~/Content/animation.css", "~/Content/animation.css")-->
+    
+   @Styles.Render("~/Content/cssini.css", "~/Content/cssini.css")
+    <meta name="viewport" content="width=device-width" />
+    <title>inicio</title>
+</head>
+<body>
+
+    @using(Html.BeginForm()){
+        <div id="imagen">
+            @RenderSection("archivo",false)
+        </div> 
+    }
+    <footer>
+        @RenderSection("pie",false)
+    </footer>
+   @RenderBody()
+</body>
+</html>

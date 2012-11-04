@@ -1,0 +1,44 @@
+﻿@model SIS758.Models.Acthab 
+
+@{
+    ViewBag.Title = "Actualizarhab";
+    Layout = "~/Views/Shared/cliente.cshtml";
+}
+
+<h2>Actualizarhab</h2>
+<div align="center"><div id="recuadro1">
+@Html.Label("gsadfghsafdghsafdgsafdgfsahgdfsaghdf");
+</div>
+@using (Html.BeginForm())
+{ 
+    <div>
+    <fieldset id="f1" align="center">
+        <legend>Actualizar Habitacion</legend>
+        @foreach (var item in @ViewBag.hab)
+        {
+        <table>
+            <td align="center">@Html.TextBoxFor(m => m.bu, new {@Value=@item.CodHab })</td><tr></tr>
+            <td >@Html.LabelFor(m => m.Nro)</td><td align="center">@Html.LabelFor(m => m.Tipo)</td><tr align="center" center="true"></tr>
+            <td>@Html.TextBoxFor(m => m.Nro, new { @Value=@item.CodHab})</td><td>@Html.DropDownListFor(m => m.Tipo, new[]{
+                                                  
+                                                     new SelectListItem{ Value=@item.CodTip,Text=@item.CodTip},                                              
+                                                      new SelectListItem { Value = "Disponible", Text = "Ocupado"},
+                                                      new SelectListItem { Value = "Ocupado", Text = "Disponible"},
+                                                      new SelectListItem { Value = "Refaccion", Text = "Refaccion"},                                              
+            })</td><tr></tr>
+            
+            <tr>
+            <td>@Html.LabelFor(m => m.Pres)</td><td>@Html.LabelFor(m => m.Est)</td><td>@Html.LabelFor(m => m.Des)</td>    
+            </tr>
+            <tr>
+            <td>@Html.TextBoxFor(m => m.Pres, new { @Value=@item.Precio})</td><td>@Html.TextBoxFor(m => m.Est, new { @Value=@item.Estado})</td><td>@Html.TextBoxFor(m => m.Des, new { @Value = @item.Descripcion })</td>
+            </tr>
+        </table>
+        }
+        <p>
+            <input   type="submit"center="true"  value="Aceptar" />
+        </p>
+    </fieldset>
+    </div>
+}
+</div>

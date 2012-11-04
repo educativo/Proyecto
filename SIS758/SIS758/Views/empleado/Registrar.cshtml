@@ -1,0 +1,64 @@
+﻿@model SIS758.Models.registraremp
+@{
+    ViewBag.Title = "Registrar";
+    Layout = "~/Views/Shared/cliente.cshtml";
+}
+
+<h2>Registrar</h2>
+<div align="center">
+  @using (Html.BeginForm())
+  {  
+        <fieldset class="re">
+            <legend>Registrar Empleado</legend>
+            <table>
+
+            <td>@Html.LabelFor(m => m.Di)@Html.ValidationMessageFor(m => m.Di)</td><td>@Html.LabelFor(m => m.Td)</td><tr></tr>
+            <td>@Html.TextBoxFor(m => m.Di, new { value = "adad" }) </td>
+            <td>@Html.DropDownListFor(m => m.Td, new[]{
+                        new SelectListItem{ Value = "Carnet de identidad", Text = "Carnet de identidad" },
+                        new SelectListItem{ Value = "Pasaporte", Text = "Pasaporte" },
+                         new SelectListItem{ Value = "Carnet Diplomatico", Text = "Carnet Diplomatico" },
+                         new SelectListItem{ Value = "Run", Text = "Run" },
+                        new SelectListItem{ Value = "Otro", Text = "Otro" },
+                }
+
+              )
+            <tr></tr>
+            <td> @Html.LabelFor(m => m.Nombre)@Html.ValidationMessageFor(m => m.Nombre)</td><td>@Html.LabelFor(m => m.Ap)@Html.ValidationMessageFor(m => m.Ap)</td><td>@Html.LabelFor(m => m.Am)@Html.ValidationMessageFor(m => m.Am)</td><tr></tr>
+            <td> @Html.TextBoxFor(m => m.Nombre, new { @placeholder = "" })</td><td>@Html.TextBoxFor(m => m.Ap, new { @placeholder = "" })</td><td>@Html.TextBoxFor(m => m.Am, new { @placeholder = "" })</td><tr></tr>
+            <td> @Html.LabelFor(m => m.pa)@Html.ValidationMessageFor(m => m.pa)</td><td>@Html.LabelFor(m => m.ciu)@Html.ValidationMessageFor(m => m.ciu)</td><td>@Html.LabelFor(m => m.dir)@Html.ValidationMessageFor(m => m.dir)</td><tr></tr>
+             <td> @Html.TextBoxFor(m => m.pa, new { @placeholder = "" })</td><td>@Html.TextBoxFor(m => m.ciu, new { @placeholder = "" })</td><td>@Html.TextBoxFor(m => m.dir, new { @placeholder = "" })</td><tr></tr> 
+             <td> @Html.LabelFor(m => m.e)@Html.ValidationMessageFor(m => m.e)</td><td>@Html.Label("Telefono")</td><td>@Html.Label("fecha de nacimiento")</td><tr></tr>
+              <td> @Html.TextBoxFor(m => m.e)</td><td>@Html.TextBoxFor(m => m.t)</td><td>@Html.TextBoxFor(m => m.fecha, new { @placeholder = "mes/dia/año" })</td><tr></tr>
+              <td>@Html.Label("cargo")@Html.ValidationMessageFor(m => m.ca)</td><td>@Html.Label("Turno")</td><tr></tr>
+              <td>@Html.TextBoxFor(m => m.ca)</td><td>@Html.DropDownListFor(m => m.Tu, new[]{
+                                             new SelectListItem{ Value = "Mañana", Text = "Mañana" },
+                                             new SelectListItem{ Value = "Tarde", Text = "Tarde" },
+                                             new SelectListItem{ Value = "Noche", Text = "Noche" },
+                                        
+               })</td><tr></tr>
+            </table>
+         
+            <p>
+                 <input  align="center" type="submit" center="true" value="Aceptar" />
+            </p>
+        </fieldset>
+  }
+    <fieldset class="de">
+    <legend>Detalle de Empleados</legend>
+    <table>
+        <td align="center" id="cero">Nº de Documento</td><td align="center" id="cero">Nombre</td><td  align="center" id="cero">Apellido Pat</td><td align="center" id="cero">Apellido Mat</td><tr></tr>
+        @foreach (var item in @ViewBag.emp)
+        {
+            string y = @item.DocId;
+            <td align="center" id="uno">@item.DocId</td>
+            <td align="center" id="dos">@item.Nombre</td>
+            <td align="center" id="dos">@item.ApPat</td>
+            <td align="center" id="dos">@item.ApMat</td>
+         <td id="tres"> @Html.ActionLink("Actualizar", "../empleado/actualizar", new { id = y })</td>
+           <td id="tres"> @Html.ActionLink("Dar_de_baja", "../empleado/eliminar", new { id = y })</td>
+            <tr></tr>
+        }
+    </table>
+    </fieldset>
+</div>

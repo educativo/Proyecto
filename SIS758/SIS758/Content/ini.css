@@ -1,0 +1,40 @@
+﻿
+body
+{
+    background-color:Black;
+}
+#imagen
+{
+    position:relative;
+    background:url("../../Images/inicio.jpg") no-repeat;
+    width:98%;
+    height:580px;
+}
+.cabezera
+{
+    width:98%;
+    height:40px;
+    background-color:Gray;
+}
+footer
+{
+    width:98%;
+    height:40px;
+    background-color:Gray;
+}
+#f1
+{
+background: rgb(240,183,161); /* Old browsers */
+background: -moz-linear-gradient(-45deg,  rgba(240,183,161,1) 0%, rgba(140,51,16,1) 50%, rgba(117,34,1,1) 51%, rgba(191,110,78,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,rgba(240,183,161,1)), color-stop(50%,rgba(140,51,16,1)), color-stop(51%,rgba(117,34,1,1)), color-stop(100%,rgba(191,110,78,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(-45deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(-45deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(-45deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%); /* IE10+ */
+background: linear-gradient(135deg,  rgba(240,183,161,1) 0%,rgba(140,51,16,1) 50%,rgba(117,34,1,1) 51%,rgba(191,110,78,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0b7a1', endColorstr='#bf6e4e',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+-webkit-border-radius: 0px 20px 0px 20px;
+-moz-border-radius: 0px 20px 0px 20px;
+width:25%;
+position:absolute;
+margin:25% 0% 0% 70%;
+}

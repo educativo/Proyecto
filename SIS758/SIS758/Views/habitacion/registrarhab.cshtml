@@ -1,0 +1,66 @@
+﻿@model SIS758.Models.registrarhab
+
+@{
+    ViewBag.Title = "registrarhab";
+    Layout = "~/Views/Shared/cliente.cshtml";
+}
+
+<h2>registrarhab</h2>
+<p>@ViewBag.maiz</p>
+@section hol{}
+<div align="center">
+  @using (Html.BeginForm())
+  { 
+    <div>
+    <fieldset class="re">
+         <legend>Registrar Habitacion</legend>
+         <table>
+            
+            <td  >@Html.LabelFor(m => m.Nro)@Html.ValidationMessageFor(m => m.Nro)</td><td >@Html.LabelFor(m => m.Tipo)@Html.ValidationMessageFor(m => m.Tipo)</td><tr></tr>
+            <td >@Html.TextBoxFor(m => m.Nro, new { value=""})@Html.ValidationMessageFor(m => m.Nro)</td><td>
+                                                @Html.DropDownListFor(m=>m.Tipo, new []{       
+                          
+                                                      new SelectListItem { Value = "Normal", Text = "Normal"},
+                                                      new SelectListItem { Value = "Suite", Text = "Suite"},
+                                                      
+                                                  }                   
+            )</td><tr></tr>
+            
+            <td> @Html.LabelFor(m => m.Pres)@Html.ValidationMessageFor(m => m.Pres)</td><td>@Html.LabelFor(m => m.Est)</td><td>@Html.LabelFor(m => m.Des)@Html.ValidationMessageFor(m => m.Des)</td><tr></tr>
+            
+            
+            <td>@Html.TextBoxFor(m => m.Pres, new { @placeholder=""})</td><td>  @Html.DropDownListFor(m=>m.Est, new []{       
+                          
+                                                      new SelectListItem { Value = "Disponible", Text = "Ocupado"},
+                                                      new SelectListItem { Value = "Ocupado", Text = "Disponible"},
+                                                      new SelectListItem { Value = "Refaccion", Text = "Refaccion"},   
+                                                  }                                              
+            )
+            </td><td>@Html.TextAreaFor(m => m.Des, new { @placeholder=""})</td>
+            
+         </table>
+         <p>
+            <input   type="submit" center="true" value="Aceptar" />
+         </p>
+    </fieldset>
+    </div>
+  }
+<fieldset class="de">
+    <legend>Detalle de Habitaciones</legend>
+    <table>
+        <td align="center" id="cero">Nº de Habitacion</td><td  align="center" id="cero">Tipo</td><td  align="center" id="cero">Estado</td><td  align="center" id="cero">Descripcion</td><tr></tr>
+        @foreach (var item in @ViewBag.habi)
+        {
+            string y = @item.CodTip;
+            string x = @item.CodHab;
+            <td align="center" id="uno">@item.CodHab</td>
+            <td align="center" id="dos">@item.CodTip</td>
+            <td align="center" id="dos">@item.Estado</td>
+            <td align="center" id="dos">@item.Descripcion</td>
+         <td id="tres"> @Html.ActionLink("Actualizar", "../habitacion/Actualizarhab", new { id = x })</td>
+           <td id="tres"> @Html.ActionLink("Dar_de_baja", "../habitacion/eliminar", new { id = x , ti = y})</td>
+            <tr></tr>
+        }
+    </table>
+    </fieldset>    
+</div>

@@ -1,0 +1,66 @@
+﻿@model SIS758.Models.actualizar
+@{
+    ViewBag.Title = "actualizar";
+    Layout = "~/Views/Shared/cliente.cshtml";
+}
+
+<h2>@ViewBag.nom</h2>
+<script>
+    $(document).ready(function () {
+
+        $.post("/cliente/loadData", {},
+        function (data) {
+
+            $("#bu").autocomplete({ source: data.nombres });
+        }, "Json");
+
+        // $(".tab_btn li a")
+
+    });
+    
+</script>
+@section hol{
+}
+<div align="center">
+<div id="recuadro1">
+@Html.Label("gsadfghsafdghsafdgsafdgfsahgdfsaghdf");
+</div>
+@using (Html.BeginForm())
+{
+     <div>
+        <fieldset id="f1">
+        
+            <legend>Actualizar Cliente</legend>
+            @foreach (var item in @ViewBag.usu2)
+            {
+            <table>
+            <td  align =center> @Html.TextBoxFor(m => m.bu, new { @Value=@item.DocId} )</td><tr></tr>
+            <td>@Html.LabelFor(m => m.Di)@Html.ValidationMessageFor(m => m.Di)</td><td>@Html.LabelFor(m => m.Td)</td><tr></tr>
+            <td>@Html.TextBoxFor(m => m.Di, new { @Value = @item.DocId }) </td>
+            <td>@Html.DropDownListFor(m => m.Td, new[]{
+                        new SelectListItem{ Value = @item.TipoDoc, Text = @item.TipoDoc },
+                        new SelectListItem{ Value = "Carnet de identidad", Text = "Carnet de identidad" },
+                        new SelectListItem{ Value = "Pasaporte", Text = "Pasaporte" },
+                         new SelectListItem{ Value = "Carnet Diplomatico", Text = "Carnet Diplomatico" },
+                         new SelectListItem{ Value = "Run", Text = "Run" },
+                        new SelectListItem{ Value = "Otro", Text = "Otro" },
+                }
+
+              )
+            <tr></tr>
+            <td> @Html.LabelFor(m => m.Nombre)@Html.ValidationMessageFor(m => m.Nombre)</td><td>@Html.LabelFor(m => m.Ap)@Html.ValidationMessageFor(m => m.Ap)</td><td>@Html.LabelFor(m => m.Am)@Html.ValidationMessageFor(m => m.Am)</td><tr></tr>
+            <td> @Html.TextBoxFor(m => m.Nombre, new { @Value=@item.Nombre })</td><td>@Html.TextBoxFor(m => m.Ap, new { @Value = @item.ApPat })</td><td>@Html.TextBoxFor(m => m.Am, new { @Value = @item.ApMat })</td><tr></tr>
+            <td> @Html.LabelFor(m => m.pa)@Html.ValidationMessageFor(m => m.pa)</td><td>@Html.LabelFor(m => m.ciu)@Html.ValidationMessageFor(m => m.ciu)</td><td>@Html.LabelFor(m => m.dir)@Html.ValidationMessageFor(m => m.dir)</td><tr></tr>
+             <td> @Html.TextBoxFor(m => m.pa, new { @Value = "Bolivia" })</td><td>@Html.TextBoxFor(m => m.ciu, new { @Value = @item.Ciudad })</td><td>@Html.TextBoxFor(m => m.dir, new { @Value = @item.Direccion })</td><tr></tr> 
+             <td> @Html.LabelFor(m => m.e)@Html.ValidationMessageFor(m => m.e)</td><td>@Html.Label("Telefono")</td><td>@Html.Label("fecha de nacimiento")</td><tr></tr>
+              <td> @Html.TextBoxFor(m => m.e, new { @Value=@item.Email})</td><td>@Html.TextBoxFor(m => m.t, new { @Value=@item.Telefono})</td><td>@Html.TextBoxFor(m => m.fecha, new {@Value=@item.FechNac})</td>
+            </table>
+            }
+            <p>
+                 <input   type="submit" center="true" value="Aceptar" />
+            </p>
+        </fieldset>
+
+     </div>
+}
+</div>

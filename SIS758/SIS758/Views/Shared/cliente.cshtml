@@ -1,0 +1,165 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    @Styles.Render("~/Content/animation.css", "~/Content/animation.css")
+     <link href="@Url.Content("../../Content/camera.css")" rel="stylesheet" type="text/css" />
+     <link href="@Url.Content("../../Content/cliente.css")" rel="stylesheet" type="text/css" />
+
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title-Cliente </title>
+    <link href="../../Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+
+     <script src="../../Scripts/jquery-1.6.2.js"></script>
+     <script src="../../Scripts/jquery-ui-1.8.11.js" > </script>
+     <!--josue desde aqui-->
+     <script  src='../../Scripts/jquery.min.js'></script>
+    <script  src='../../Scripts/jquery.mobile.customized.min.js'></script>
+    <script src='../../Scripts/jquery.easing.1.3.js'></script> 
+    <script  src='../../Scripts/camera.min.js'></script> 
+    <script src="../../Scripts/animated-menu.js" ></script>
+
+     <style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		a {
+			color: #09f;
+		}
+		a:hover {
+			text-decoration: none;
+		}
+		#back_to_camera {
+			clear: both;
+			display: block;
+			height: 80px;
+			line-height: 40px;
+			padding: 20px;
+		}
+		.fluid_container {
+			margin: 0 auto;
+			max-width: 1000px;
+			width: 80%;
+			
+		}
+	</style>
+    <script>
+        $(document).ready(function () {
+
+            $.post("/cliente/loadData", {},
+        function (data) {
+
+            $("#bu").autocomplete({ source: data.nombres });
+        }, "Json");
+
+            // $(".tab_btn li a")
+
+        });
+    
+</script>
+    <script>
+        jQuery(function () {
+
+            jQuery('#camera_wrap_1').camera({
+                height: '250px',
+
+                thumbnails: true
+            });
+
+            jQuery('#camera_wrap_2').camera({
+                height: '400px',
+                loader: 'bar',
+                pagination: false,
+                thumbnails: true
+            });
+        });
+	</script>
+
+        <script>
+            $(document).ready(function () {
+                $("#fecha").datepicker();
+            });
+        </script>
+        <!-- hasta aqui parte uno-->
+</head>
+<body>
+    <header>
+     
+    </header>
+    <!--otra ves desde aqui-->
+       
+   <div class="fluid_container">
+    	<p>Pagination circles with the height relative to the width</p>
+     
+        <div class="camera_wrap camera_azure_skin" id="camera_wrap_1">
+            <div data-thumb="../../images/slides/thumbs/bridge.jpg" data-src="../../images/slides/bridge.jpg">
+                <div class="camera_caption fadeFromBottom">
+                    Disfrute de un servicio de Primera <em>y unico</em>
+                </div>
+            </div>
+            <div data-thumb="../../images/slides/thumbs/leaf.jpg" data-src="../../images/slides/leaf.jpg">
+                <div class="camera_caption fadeFromBottom">
+                    Admirese y conosca las hermosas esculturas <em>que tenemos para usted</em>
+                </div>
+            </div>
+            <div data-thumb="../../images/slides/thumbs/road.jpg" data-src="../../images/slides/road.jpg">
+                <div class="camera_caption fadeFromBottom">
+                    <em>Disfrute de nuestras pisinas curativas</em> y compruebelas
+                </div>
+            </div>
+            <div data-thumb="../../images/slides/thumbs/sea.jpg" data-src="../../images/slides/sea.jpg">
+                <div class="camera_caption fadeFromBottom">
+                  Venga y sientase cerca del cielo <em> y admire esa </em> belleza cautivadora
+                </div>
+            </div>
+            <div data-thumb="../../images/slides/thumbs/shelter.jpg" data-src="../../images/slides/shelter.jpg">
+                <div class="camera_caption fadeFromBottom">
+                    Viva la experiencia de BlackThorn<em> filmada en el Salar </em>de Uyuni 
+                </div>
+            </div>
+            <div data-thumb="../../images/slides/thumbs/salar7.jpg" data-src="../../images/slides/tree.jpg">
+                <div class="camera_caption fadeFromBottom">
+                    Y disfrute de una vista inolvidable e imcomparable <em>XD</em>
+                </div>
+            </div>
+        </div><!-- #camera_wrap_1 --> 
+        <div class="hol">
+           <ul>
+		<li class="green">
+			<p class="xxx"><a href="#" class="a">Inicio<a></p>
+
+		</li>
+		<li class="yellow" >
+			<p class="xxx"><a href="../../cliente/registrar" class="a">Clientes</a></p>
+
+		</li>
+		<li class="red" >
+			<p class="xxx"> <a href="../../empleado/registrar" class="a">Empleados</a></p>
+
+		</li>
+		<li class="blue">
+			<p class="xxx"><a href="../../usuario/registrar" class="a" >Usuarios</a></p>
+
+		</li>
+		<li class="purple" >
+			<p class="xxx"><a href="../../habitacion/registrarhab" class="a">Habitaciones</a></p>
+		</li>
+	    </ul>
+        </div>
+   </div>
+   <!--hasta aqui-->
+
+  
+    @RenderSection("hol",false)
+    @RenderBody()
+    <footer>
+        <p>
+            Diseñado por JHAJO
+        </p>
+    </footer>
+</body>
+</html>
